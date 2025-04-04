@@ -3,17 +3,1415 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Markdown Viewer</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.12/marked.min.js"></script>
+    <title>Arise Connect Platform Test Plan</title>
+    <script>
+        // Initialize test results from localStorage when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTestResults();
+            updateSummary();
+            
+            // Add event listeners to all radio buttons
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    saveTestResults();
+                    updateSummary();
+                });
+            });
+            
+            // Add event listener to reset button
+            document.getElementById('resetResults').addEventListener('click', function() {
+                if (confirm('Are you sure you want to reset all test results?')) {
+                    resetAllTests();
+                    updateSummary();
+                }
+            });
+            
+            // Add event listener to export button
+            document.getElementById('exportResults').addEventListener('click', exportTestResults);
+        });
+        
+        // Save test results to localStorage
+        function saveTestResults() {
+            const results = {};
+            document.querySelectorAll('tr[data-test-id]').forEach(row => {
+                const testId = row.getAttribute('data-test-id');
+                const status = row.querySelector('input[type="radio"]:checked')?.value || 'not-tested';
+                const notes = row.querySelector('.test-notes')?.value || '';
+                results[testId] = { status, notes };
+            });
+            localStorage.setItem('ariseConnectTestResults', JSON.stringify(results));
+        }
+        
+        // Load test results from localStorage
+        function loadTestResults() {
+            const savedResults = localStorage.getItem('ariseConnectTestResults');
+            if (savedResults) {
+                const results = JSON.parse(savedResults);
+                Object.keys(results).forEach(testId => {
+                    const row = document.querySelector(`tr[data-test-id="${testId}"]`);
+                    if (row) {
+                        const status = results[testId].status;
+                        const radioBtn = row.querySelector(`input[type="radio"][value="${status}"]`);
+                        if (radioBtn) radioBtn.checked = true;
+                        
+                        const notes = results[testId].notes;
+                        const notesField = row.querySelector('.test-notes');
+                        if (notesField) notesField.value = notes;
+                    }
+                });
+            }
+        }
+        
+        // Reset all test results
+        function resetAllTests() {
+            document.querySelectorAll('tr[data-test-id]').forEach(row => {
+                row.querySelectorAll('input[type="radio"]').forEach(radio => {
+                    radio.checked = false;
+                });
+                const notesField = row.querySelector('.test-notes');
+                if (notesField) notesField.value = '';
+            });
+            localStorage.removeItem('ariseConnectTestResults');
+        }
+        
+        // Update summary statistics
+        function updateSummary() {
+            let total = 0;
+            let passed = 0;
+            let failed = 0;
+            let notTested = 0;
+            
+            document.querySelectorAll('tr[data-test-id]').forEach(row => {
+                total++;
+                const passedRadio = row.querySelector('input[value="pass"]:checked');
+                const failedRadio = row.querySelector('input[value="fail"]:checked');
+                
+                if (passedRadio) passed++;
+                else if (failedRadio) failed++;
+                else notTested++;
+            });
+            
+            document.getElementById('totalTests').textContent = total;
+            document.getElementById('passedTests').textContent = passed;
+            document.getElementById('failedTests').textContent = failed;
+            document.getElementById('notTestedTests').textContent = notTested;
+            
+            const passRate = total > 0 ? Math.round((passed / total) * 100) : 0;
+            document.getElementById('passRate').textContent = passRate;
+            
+            // Update progress bar
+            document.getElementById('progressBar').style.width = `${passRate}%`;
+            
+            // Update color based on pass rate
+            let progressColor = '#dc3545'; // red
+            if (passRate >= 80) progressColor = '#28a745'; // green
+            else if (passRate >= 50) progressColor = '#ffc107'; // yellow
+            document.getElementById('progressBar').style.backgroundColor = progressColor;
+        }
+        
+        // Export test results as CSV
+        function exportTestResults() {
+            let csv = 'Test ID,Test Case,Description,Expected Result,Status,Notes\n';
+            
+            document.querySelectorAll('tr[data-test-id]').forEach(row => {
+                const testId = row.getAttribute('data-test-id');
+                const testCase = row.querySelector('td:nth-child(1)')?.textContent || '';
+                const description = row.querySelector('td:nth-child(2)')?.textContent || '';
+                const expectedResult = row.querySelector('td:nth-child(3)')?.textContent || '';
+                
+                let status = 'Not Tested';
+                if (row.querySelector('input[value="pass"]:checked')) status = 'Pass';
+                else if (row.querySelector('input[value="fail"]:checked')) status = 'Fail';
+                
+                const notes = row.querySelector('.test-notes')?.value || '';
+                
+                // Escape fields that might contain commas
+                const escapedTestCase = `"${testCase.replace(/"/g, '""')}"`;
+                const escapedDescription = `"${description.replace(/"/g, '""')}"`;
+                const escapedExpectedResult = `"${expectedResult.replace(/"/g, '""')}"`;
+                const escapedNotes = `"${notes.replace(/"/g, '""')}"`;
+                
+                csv += `${testId},${escapedTestCase},${escapedDescription},${escapedExpectedResult},${status},${escapedNotes}\n`;
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.setAttribute('href', url);
+            link.setAttribute('download', 'arise-connect-test-results.csv');
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        /* Test status styles */
+        .test-status {
+            width: 150px;
+            padding: 8px;
+            border-left: 1px solid #ddd;
+        }
+        .test-notes-cell {
+            padding: 8px;
+            border-left: 1px solid #ddd;
+        }
+        .test-notes {
+            width: 100%;
+            min-height: 60px;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            resize: vertical;
+        }
+        .status-label {
+            margin-right: 10px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+        }
+        .status-label input {
+            margin-right: 5px;
+        }
+        .pass-label {
+            color: #28a745;
+        }
+        .fail-label {
+            color: #dc3545;
+        }
+        /* Dashboard styles */
+        .dashboard {
+            background-color: #f8f9fa;
+            border: 1px solid #eaecef;
+            border-radius: 3px;
+            padding: 15px 20px;
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .dashboard-item {
+            margin: 10px;
+            text-align: center;
+        }
+        .dashboard-value {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        .dashboard-label {
+            font-size: 14px;
+            color: #666;
+        }
+        .progress-container {
+            width: 100%;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            margin: 10px 0;
+            height: 20px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            background-color: #28a745;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        .dashboard-actions {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .dashboard-button {
+            padding: 8px 16px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+        .dashboard-button:hover {
+            background-color: #e9ecef;
+        }
+        .export-button {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+        .export-button:hover {
+            background-color: #0069d9;
+        }
+        .reset-button {
+            background-color: #dc3545;
+            color: white;
+            border-color: #dc3545;
+        }
+        .reset-button:hover {
+            background-color: #c82333;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        h2 {
+            margin-top: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        h3 {
+            margin-top: 25px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #eee;
+            margin: 30px 0;
+        }
+        .toc {
+            background-color: #f8f9fa;
+            border: 1px solid #eaecef;
+            border-radius: 3px;
+            padding: 15px 20px;
+            margin: 20px 0;
+        }
+        .toc ul {
+            padding-left: 20px;
+        }
+    </style>
 </head>
 <body>
-    <div id="content"></div>
-    <script>
-        fetch('README.md')
-            .then(response => response.text())
-            .then(text => {
-                document.getElementById('content').innerHTML = marked.parse(text);
-            });
-    </script>
+    <h1 id="arise-connect-platform-test-plan">Arise Connect Platform Test Plan</h1>
+    
+    <p>This test plan outlines comprehensive testing scenarios for the Arise Connect platform, organized by user roles: Normal Users, Moderators, and Administrators. Each section covers specific functionality that should be tested to ensure the platform works correctly for all user types.</p>
+    
+    <!-- Test Results Dashboard -->
+    <div class="dashboard">
+        <div class="dashboard-item">
+            <div class="dashboard-value" id="totalTests">0</div>
+            <div class="dashboard-label">Total Tests</div>
+        </div>
+        <div class="dashboard-item">
+            <div class="dashboard-value" id="passedTests">0</div>
+            <div class="dashboard-label">Passed</div>
+        </div>
+        <div class="dashboard-item">
+            <div class="dashboard-value" id="failedTests">0</div>
+            <div class="dashboard-label">Failed</div>
+        </div>
+        <div class="dashboard-item">
+            <div class="dashboard-value" id="notTestedTests">0</div>
+            <div class="dashboard-label">Not Tested</div>
+        </div>
+        <div class="dashboard-item">
+            <div class="dashboard-value"><span id="passRate">0</span>%</div>
+            <div class="dashboard-label">Pass Rate</div>
+        </div>
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="dashboard-actions">
+            <button id="exportResults" class="dashboard-button export-button">Export Results</button>
+            <button id="resetResults" class="dashboard-button reset-button">Reset All Tests</button>
+        </div>
+    </div>
+    
+    <div class="toc">
+        <h2 id="table-of-contents">Table of Contents</h2>
+        <ol>
+            <li><a href="#normal-user-testing">Normal User Testing</a></li>
+            <li><a href="#moderator-testing">Moderator Testing</a></li>
+            <li><a href="#administrator-testing">Administrator Testing</a></li>
+            <li><a href="#cross-role-testing">Cross-Role Testing</a></li>
+            <li><a href="#test-environment-setup">Test Environment Setup</a></li>
+        </ol>
+    </div>
+    
+    <hr>
+    
+    <h2 id="normal-user-testing">Normal User Testing</h2>
+    
+    <h3 id="authentication-account-management">Authentication &amp; Account Management</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Test Case</th>
+                <th>Description</th>
+                <th>Expected Result</th>
+                <th>Status</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-test-id="auth-registration">
+                <td>Registration</td>
+                <td>Register a new account with valid information</td>
+                <td>Account is created successfully and verification email is sent</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="auth-registration" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="auth-registration" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
+            </tr>
+            <tr data-test-id="auth-email-verification">
+                <td>Email Verification</td>
+                <td>Verify email address using the link sent during registration</td>
+                <td>Email is verified and user can access the platform</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="auth-email-verification" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="auth-email-verification" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
+            </tr>
+            <tr data-test-id="auth-login">
+                <td>Login</td>
+                <td>Login with valid credentials</td>
+                <td>User is logged in successfully and redirected to the home page</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="auth-login" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="auth-login" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
+            </tr>
+            <tr data-test-id="auth-login-2fa">
+                <td>Login with 2FA</td>
+                <td>Login with valid credentials when 2FA is enabled</td>
+                <td>User is prompted for 2FA code and logged in successfully after providing it</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="auth-login-2fa" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="auth-login-2fa" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
+            </tr>
+            <tr data-test-id="auth-password-reset">
+                <td>Password Reset</td>
+                <td>Request password reset and set a new password</td>
+                <td>Password is reset successfully and user can login with the new password</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="auth-password-reset" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="auth-password-reset" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
+            </tr>
+            <tr data-test-id="auth-logout">
+                <td>Logout</td>
+                <td>Logout from the platform</td>
+                <td>User is logged out and redirected to the login page</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="auth-logout" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="auth-logout" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3 id="profile-management">Profile Management</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Test Case</th>
+                <th>Description</th>
+                <th>Expected Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>View Profile</td>
+                <td>Navigate to profile page</td>
+                <td>User's profile information is displayed correctly</td>
+            </tr>
+            <tr>
+                <td>Edit Profile</td>
+                <td>Update profile information (headline, summary, contact info)</td>
+                <td>Profile information is updated successfully</td>
+            </tr>
+            <tr>
+                <td>Upload Profile Picture</td>
+                <td>Upload a new profile picture</td>
+                <td>Profile picture is updated successfully</td>
+            </tr>
+            <tr>
+                <td>Add Work Experience</td>
+                <td>Add a new work experience entry</td>
+                <td>Work experience is added to the profile</td>
+            </tr>
+            <tr>
+                <td>Edit Work Experience</td>
+                <td>Update an existing work experience entry</td>
+                <td>Work experience is updated successfully</td>
+            </tr>
+            <tr>
+                <td>Delete Work Experience</td>
+                <td>Remove a work experience entry</td>
+                <td>Work experience is removed from the profile</td>
+            </tr>
+            <tr>
+                <td>Add Education</td>
+                <td>Add a new education entry</td>
+                <td>Education is added to the profile</td>
+            </tr>
+            <tr>
+                <td>Edit Education</td>
+                <td>Update an existing education entry</td>
+                <td>Education is updated successfully</td>
+            </tr>
+            <tr>
+                <td>Delete Education</td>
+                <td>Remove an education entry</td>
+                <td>Education is removed from the profile</td>
+            </tr>
+            <tr>
+                <td>Add Skills</td>
+                <td>Add new skills to the profile</td>
+                <td>Skills are added successfully</td>
+            </tr>
+            <tr>
+                <td>Remove Skills</td>
+                <td>Remove skills from the profile</td>
+                <td>Skills are removed successfully</td>
+            </tr>
+            <tr>
+                <td>Add Languages</td>
+                <td>Add new languages to the profile</td>
+                <td>Languages are added successfully</td>
+            </tr>
+            <tr>
+                <td>Remove Languages</td>
+                <td>Remove languages from the profile</td>
+                <td>Languages are removed successfully</td>
+            </tr>
+            <tr>
+                <td>Add Certifications</td>
+                <td>Add new certifications to the profile</td>
+                <td>Certifications are added successfully</td>
+            </tr>
+            <tr>
+                <td>Remove Certifications</td>
+                <td>Remove certifications from the profile</td>
+                <td>Certifications are removed successfully</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3 id="news-and-insights">News and Insights</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Test Case</th>
+                <th>Description</th>
+                <th>Expected Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>View News List</td>
+                <td>Navigate to the News and Insights page</td>
+                <td>List of news articles is displayed correctly</td>
+            </tr>
+            <tr>
+                <td>Filter News</td>
+                <td>Filter news by category (Arise, Regional, Global)</td>
+                <td>Filtered news articles are displayed correctly</td>
+            </tr>
+            <tr>
+                <td>View News Article</td>
+                <td>Open a news article</td>
+                <td>Article content is displayed correctly</td>
+            </tr>
+            <tr>
+                <td>Add Comment</td>
+                <td>Add a comment to a news article</td>
+                <td>Comment is added successfully</td>
+            </tr>
+            <tr>
+                <td>Reply to Comment</td>
+                <td>Reply to an existing comment</td>
+                <td>Reply is added successfully</td>
+            </tr>
+            <tr>
+                <td>Add Reaction</td>
+                <td>Add a reaction to a comment</td>
+                <td>Reaction is added successfully</td>
+            </tr>
+            <tr>
+                <td>View User Profile from Comment</td>
+                <td>Click on a user's name in a comment</td>
+                <td>User's profile is displayed</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3 id="knowledge-hub">Knowledge Hub</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Test Case</th>
+                <th>Description</th>
+                <th>Expected Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>View Knowledge Hub</td>
+                <td>Navigate to the Knowledge Hub page</td>
+                <td>Knowledge Hub content is displayed correctly</td>
+            </tr>
+            <tr>
+                <td>Browse Topics</td>
+                <td>Browse different topics (Agribusiness, SME, Retail, etc.)</td>
+                <td>Topic content is displayed correctly</td>
+            </tr>
+            <tr>
+                <td>View Resources</td>
+                <td>Access resources in the Knowledge Hub</td>
+                <td>Resources are displayed correctly</td>
+            </tr>
+            <tr>
+                <td>Download Resource</td>
+                <td>Download a resource</td>
+                <td>Resource is downloaded successfully</td>
+            </tr>
+            <tr>
+                <td>View Discussions</td>
+                <td>Access discussions in the Knowledge Hub</td>
+                <td>Discussions are displayed correctly</td>
+            </tr>
+            <tr>
+                <td>Start Discussion</td>
+                <td>Create a new discussion</td>
+                <td>Discussion is created successfully</td>
+            </tr>
+            <tr>
+                <td>Participate in Discussion</td>
+                <td>Add comments to a discussion</td>
+                <td>Comments are added successfully</td>
+            </tr>
+            <tr>
+                <td>React to Discussion</td>
+                <td>Add reactions to a discussion</td>
+                <td>Reactions are added successfully</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3 id="events">Events</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Test Case</th>
+                <th>Description</th>
+                <th>Expected Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>View Events</td>
+                <td>Navigate to the Events page</td>
+                <td>List of events is displayed correctly</td>
+            </tr>
+            <tr>
+                <td>Filter Events</td>
+                <td>Filter events by date, category, or location</td>
+                <td>Filtered events are displayed correctly</td>
+            </tr>
+            <tr>
+                <td>View Event Details</td>
+                <td>Open an event to view details</td>
+                <td>Event details are displayed correctly</td>
+            </tr>
+            <tr>
+                <td>Register for Event</td>
+                <td>Register to attend an event</td>
+                <td>Registration is completed successfully</td>
+            </tr>
+            <tr>
+                <td>Cancel Registration</td>
+                <td>Cancel registration for an event</td>
+                <td>Registration is canceled successfully</td>
+            </tr>
+            <tr>
+                <td>Add Event to Calendar</td>
+                <td>Add an event to calendar</td>
+                <td>Event is added to calendar successfully</td>
+            </tr>
+            <tr>
+                <td>Receive Event Reminder</td>
+                <td>Verify event reminders are received</td>
+                <td>Event reminders are received as configured</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3 id="chat-and-messaging">Chat and Messaging</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Test Case</th>
+                <th>Description</th>
+                <th>Expected Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Access Chat</td>
+                <td>Navigate to the Chat page</td>
+                <td>Chat interface is displayed correctly</td>
+            </tr>
+            <tr>
+                <td>Start New Chat</td>
+                <td>Start a new chat with another user</td>
+                <td>Chat is created successfully</td>
+            </tr>
+            <tr>
+                <td>Send Message</td>
+                <td>Send a message in a chat</td>
+                <td>Message is sent successfully</td>
+            </tr>
+            <tr>
+                <td>Receive Message</td>
+                <td>Receive a message from another user</td>
+                <td>Message is received and displayed correctly</td>
+            </tr>
+            <tr>
+                <td>View Chat History</td>
+                <td>Scroll through chat history</td>
+                <td>Chat history is displayed correctly</td>
+            </tr>
+            <tr>
+                <td>Search Messages</td>
+                <td>Search for specific messages</td>
+                <td>Search results are displayed correctly</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3 id="my-network">My Network</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Test Case</th>
+                <th>Description</th>
+                <th>Expected Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>View Network</td>
+                <td>Navigate to My Network page</td>
+                <td>Network connections are displayed correctly</td>
+            </tr>
+            <tr>
+                <td>Search for Users</td>
+                <td>Search for users to connect with</td>
+                <td>Search results are displayed correctly</td>
+            </tr>
+            <tr>
+                <td>Send Connection Request</td>
+                <td>Send a connection request to another user</td>
+                <td>Connection request is sent successfully</td>
+            </tr>
+            <tr>
+                <td>Accept Connection Request</td>
+                <td>Accept a connection request from another user</td>
+                <td>Connection is established successfully</td>
+            </tr>
+            <tr>
+                <td>Decline Connection Request</td>
+                <td>Decline a connection request</td>
+                <td>Connection request is declined successfully</td>
+            </tr>
+            <tr>
+                <td>Remove Connection</td>
+                <td>Remove an existing connection</td>
+                <td>Connection is removed successfully</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3 id="notifications">Notifications</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Test Case</th>
+                <th>Description</th>
+                <th>Expected Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>View Notifications</td>
+                <td>Navigate to the Notifications page</td>
+                <td>Notifications are displayed correctly</td>
+            </tr>
+            <tr>
+                <td>Mark Notification as Read</td>
+                <td>Mark a notification as read</td>
+                <td>Notification is marked as read successfully</td>
+            </tr>
+            <tr>
+                <td>Clear All Notifications</td>
+                <td>Clear all notifications</td>
+                <td>All notifications are cleared successfully</td>
+            </tr>
+            <tr>
+                <td>Notification Preferences</td>
+                <td>Update notification preferences</td>
+                <td>Preferences are updated successfully</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <hr>
+    
+    <h2 id="moderator-testing">Moderator Testing</h2>
+    
+    <p>Moderators have all the capabilities of normal users, plus the following:</p>
+    
+    <h3 id="content-moderation">Content Moderation</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Test Case</th>
+                <th>Description</th>
+                <th>Expected Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>View Reported Content</td>
+                <td>Access reported content</td>
+                <td>Reported content is displayed correctly</td>
+            </tr>
+            <tr>
+                <td>Review Comment</td>
+                <td>Review a reported comment</td>
+                <td>Comment details are displayed correctly</td>
+            </tr>
+            <tr>
+                <td>Approve Comment</td>
+                <td>Approve a reported comment</td>
+                <td>Comment is approved and remains visible</td>
+            </tr>
+            <tr>
+                <td>Delete Comment</td>
+                <td>Delete a reported comment</td>
+                <td>Comment is deleted successfully</td>
+            </tr>
+            <tr>
+                <td>Review Discussion</td>
+                <td>Review a reported discussion</td>
+                <td>Discussion details are displayed correctly</td>
+            </tr>
+            <tr>
+                <td>Approve Discussion</td>
+                <td>Approve a reported discussion</td>
+                <td>Discussion is approved and remains visible</td>
+            </tr>
+            <tr>
+                <td>Delete Discussion</td>
+                <td>Delete a reported discussion</td>
+                <td>Discussion is deleted successfully</td>
+            </tr>
+            <tr>
+                <td>Issue Warning</td>
+                <td>Issue a warning to a user</td>
+                <td>Warning is issued successfully</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3 id="resource-management">Resource Management</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Test Case</th>
+                <th>Description</th>
+                <th>Expected Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Add Resource</td>
+                <td>Add a new resource to the Knowledge Hub</td>
+                <td>Resource is added successfully</td>
+            </tr>
+            <tr>
+                <td>Edit Resource</td>
+                <td>Update an existing resource</td>
+                <td>Resource is updated successfully</td>
+            </tr>
+            <tr>
+                <td>Delete Resource</td>
+                <td>Remove a resource</td>
+                <td>Resource is deleted successfully</td>
+            </tr>
+            <tr>
+                <td>Categorize Resource</td>
+                <td>Assign categories to a resource</td>
+                <td>Categories are assigned successfully</td>
+            </tr>
+            <tr>
+                <td>Feature Resource</td>
+                <td>Mark a resource as featured</td>
+                <td>Resource is featured successfully</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3 id="discussion-management">Discussion Management</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Test Case</th>
+                <th>Description</th>
+                <th>Expected Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Pin Discussion</td>
+                <td>Pin a discussion to the top</td>
+                <td>Discussion is pinned successfully</td>
+            </tr>
+            <tr>
+                <td>Close Discussion</td>
+                <td>Close a discussion to prevent new comments</td>
+                <td>Discussion is closed successfully</td>
+            </tr>
+            <tr>
+                <td>Reopen Discussion</td>
+                <td>Reopen a closed discussion</td>
+                <td>Discussion is reopened successfully</td>
+            </tr>
+            <tr>
+                <td>Move Discussion</td>
+                <td>Move a discussion to a different category</td>
+                <td>Discussion is moved successfully</td>
+            </tr>
+            <tr>
+                <td>Manage Participants</td>
+                <td>Add or remove participants from a discussion</td>
+                <td>Participants are updated successfully</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3 id="event-moderation">Event Moderation</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Test Case</th>
+                <th>Description</th>
+                <th>Expected Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Review Event Registration</td>
+                <td>Review event registrations</td>
+                <td>Registrations are displayed correctly</td>
+            </tr>
+            <tr>
+                <td>Approve Registration</td>
+                <td>Approve a registration</td>
+                <td>Registration is approved successfully</td>
+            </tr>
+            <tr>
+                <td>Reject Registration</td>
+                <td>Reject a registration</td>
+                <td>Registration is rejected successfully</td>
+            </tr>
+            <tr>
+                <td>Export Attendee List</td>
+                <td>Export list of event attendees</td>
+                <td>Attendee list is exported successfully</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <hr>
+    
+    <h2 id="administrator-testing">Administrator Testing</h2>
+    
+    <p>Administrators have all the capabilities of moderators, plus the following:</p>
+    
+    <h3 id="user-management">User Management</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Test Case</th>
+                <th>Description</th>
+                <th>Expected Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>View Users</td>
+                <td>Access the user management page</td>
+                <td>Users are displayed correctly</td>
+            </tr>
+            <tr>
+                <td>Create User</td>
+                <td>Create a new user account</td>
+                <td>User is created successfully</td>
+            </tr>
+            <tr>
+                <td>Edit User</td>
+                <td>Update user information</td>
+                <td>User information is updated successfully</td>
+            </tr>
+            <tr>
+                <td>Delete User</td>
+                <td>Delete a user account</td>
+                <td>User is deleted successfully</td>
+            </tr>
+            <tr>
+                <td>Assign Role</td>
+                <td>Assign a role to a user (Admin, Moderator, Expert)</td>
+                <td>Role is assigned successfully</td>
+            </tr>
+            <tr>
+                <td>Remove Role</td>
+                <td>Remove a role from a user</td>
+                <td>Role is removed successfully</td>
+            </tr>
+            <tr>
+                <td>Reset User Password</td>
+                <td>Reset a user's password</td>
+                <td>Password is reset successfully</td>
+            </tr>
+            <tr>
+                <td>View User Activity</td>
+                <td>View a user's activity log</td>
+                <td>Activity log is displayed correctly</td>
+            </tr>
+            <tr>
+                <td>Suspend User</td>
+                <td>Suspend a user account</td>
+                <td>User account is suspended successfully</td>
+            </tr>
+            <tr>
+                <td>Reactivate User</td>
+                <td>Reactivate a suspended user account</td>
+                <td>User account is reactivated successfully</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3 id="role-management">Role Management</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Test Case</th>
+                <th>Description</th>
+                <th>Expected Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>View Roles</td>
+                <td>Access the role management page</td>
+                <td>Roles are displayed correctly</td>
+            </tr>
+            <tr>
+                <td>Create Role</td>
+                <td>Create a new custom role</td>
+                <td>Role is created successfully</td>
+            </tr>
+            <tr>
+                <td>Edit Role</td>
+                <td>Update role permissions</td>
+                <td>Role is updated successfully</td>
+            </tr>
+            <tr>
+                <td>Delete Role</td>
+                <td>Delete a custom role</td>
+                <td>Role is deleted successfully</td>
+            </tr>
+            <tr>
+                <td>Assign Permissions</td>
+                <td>Assign permissions to a role</td>
+                <td>Permissions are assigned successfully</td>
+            </tr>
+            <tr>
+                <td>Remove Permissions</td>
+                <td>Remove permissions from a role</td>
+                <td>Permissions are removed successfully</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3 id="content-management">Content Management</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Test Case</th>
+                <th>Description</th>
+                <th>Expected Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Create News Article</td>
+                <td>Create a new news article</td>
+                <td>Article is created successfully</td>
+            </tr>
+            <tr>
+                <td>Edit News Article</td>
+                <td>Update an existing news article</td>
+                <td>Article is updated successfully</td>
+            </tr>
+            <tr>
+                <td>Delete News Article</td>
+                <td>Delete a news article</td>
+                <td>Article is deleted successfully</td>
+            </tr>
+            <tr>
+                <td>Publish Article</td>
+                <td>Publish a draft article</td>
+                <td>Article is published successfully</td>
+            </tr>
+            <tr>
+                <td>Unpublish Article</td>
+                <td>Unpublish a published article</td>
+                <td>Article is unpublished successfully</td>
+            </tr>
+            <tr>
+                <td>Feature Article</td>
+                <td>Mark an article as featured</td>
+                <td>Article is featured successfully</td>
+            </tr>
+            <tr>
+                <td>Manage Categories</td>
+                <td>Add, edit, or delete news categories</td>
+                <td>Categories are managed successfully</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3 id="platform-configuration">Platform Configuration</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Test Case</th>
+                <th>Description</th>
+                <th>Expected Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Update Site Settings</td>
+                <td>Update general site settings</td>
+                <td>Settings are updated successfully</td>
+            </tr>
+            <tr>
+                <td>Manage Navigation</td>
+                <td>Update navigation menu items</td>
+                <td>Navigation is updated successfully</td>
+            </tr>
+            <tr>
+                <td>Manage Sidebar</td>
+                <td>Update sidebar items</td>
+                <td>Sidebar is updated successfully</td>
+            </tr>
+            <tr>
+                <td>Manage Header</td>
+                <td>Update header content</td>
+                <td>Header is updated successfully</td>
+            </tr>
+            <tr>
+                <td>Configure Email Templates</td>
+                <td>Update email notification templates</td>
+                <td>Templates are updated successfully</td>
+            </tr>
+            <tr>
+                <td>Configure Integrations</td>
+                <td>Update integration settings (LinkedIn, etc.)</td>
+                <td>Integrations are updated successfully</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3 id="analytics-and-reporting">Analytics and Reporting</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Test Case</th>
+                <th>Description</th>
+                <th>Expected Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>View Dashboard</td>
+                <td>Access the admin dashboard</td>
+                <td>Dashboard is displayed correctly</td>
+            </tr>
+            <tr>
+                <td>View User Statistics</td>
+                <td>Access user statistics</td>
+                <td>Statistics are displayed correctly</td>
+            </tr>
+            <tr>
+                <td>View Content Statistics</td>
+                <td>Access content statistics</td>
+                <td>Statistics are displayed correctly</td>
+            </tr>
+            <tr>
+                <td>View Engagement Metrics</td>
+                <td>Access engagement metrics</td>
+                <td>Metrics are displayed correctly</td>
+            </tr>
+            <tr>
+                <td>Generate Reports</td>
+                <td>Generate custom reports</td>
+                <td>Reports are generated successfully</td>
+            </tr>
+            <tr>
+                <td>Export Data</td>
+                <td>Export data for analysis</td>
+                <td>Data is exported successfully</td>
+            </tr>
+            <tr>
+                <td>View Audit Logs</td>
+                <td>Access system audit logs</td>
+                <td>Audit logs are displayed correctly</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3 id="system-management">System Management</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Test Case</th>
+                <th>Description</th>
+                <th>Expected Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>View System Status</td>
+                <td>Access system status information</td>
+                <td>Status information is displayed correctly</td>
+            </tr>
+            <tr>
+                <td>Clear Cache</td>
+                <td>Clear system cache</td>
+                <td>Cache is cleared successfully</td>
+            </tr>
+            <tr>
+                <td>Backup Data</td>
+                <td>Initiate a data backup</td>
+                <td>Backup is created successfully</td>
+            </tr>
+            <tr>
+                <td>Restore Data</td>
+                <td>Restore data from a backup</td>
+                <td>Data is restored successfully</td>
+            </tr>
+            <tr>
+                <td>Update System Settings</td>
+                <td>Update system configuration</td>
+                <td>Settings are updated successfully</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <hr>
+    
+    <h2 id="cross-role-testing">Cross-Role Testing</h2>
+    
+    <p>These tests should be performed with users of different roles to ensure proper permission enforcement:</p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Test Case</th>
+                <th>Description</th>
+                <th>Expected Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Access Control</td>
+                <td>Attempt to access restricted pages with different user roles</td>
+                <td>Access is granted or denied based on user role</td>
+            </tr>
+            <tr>
+                <td>Permission Enforcement</td>
+                <td>Attempt to perform actions requiring specific permissions</td>
+                <td>Actions are allowed or prevented based on user permissions</td>
+            </tr>
+            <tr>
+                <td>Role Visibility</td>
+                <td>Verify that UI elements are shown/hidden based on user role</td>
+                <td>UI elements are displayed appropriately for each role</td>
+            </tr>
+            <tr>
+                <td>Content Visibility</td>
+                <td>Verify that content visibility respects access controls</td>
+                <td>Content is visible or hidden based on user permissions</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <hr>
+    
+    <h2 id="test-environment-setup">Test Environment Setup</h2>
+    
+    <h3 id="prerequisites">Prerequisites</h3>
+    
+    <ol>
+        <li>Test accounts for each user role:
+            <ul>
+                <li>Normal User: <code>testuser@example.com</code></li>
+                <li>Moderator: <code>testmoderator@example.com</code></li>
+                <li>Administrator: <code>testadmin@example.com</code></li>
+            </ul>
+        </li>
+        <li>Test data:
+            <ul>
+                <li>Sample news articles</li>
+                <li>Sample knowledge hub resources</li>
+                <li>Sample discussions</li>
+                <li>Sample events</li>
+                <li>Sample user profiles</li>
+            </ul>
+        </li>
+    </ol>
+    
+    <h3 id="testing-process">Testing Process</h3>
+    
+    <ol>
+        <li>Begin with clean test environment</li>
+        <li>Execute test cases in the order listed</li>
+        <li>Document any issues encountered</li>
+        <li>Verify fixes for reported issues</li>
+        <li>Perform regression testing after fixes</li>
+    </ol>
+    
+    <h3 id="reporting">Reporting</h3>
+    
+    <p>For each test case, record:</p>
+    <ul>
+        <li>Test case ID</li>
+        <li>Test date</li>
+        <li>Tester name</li>
+        <li>Test result (Pass/Fail)</li>
+        <li>Description of any issues</li>
+        <li>Screenshots or videos of issues</li>
+        <li>Browser/device information</li>
+    </ul>
+    
+    <hr>
+    
+    <h2 id="continuous-testing">Continuous Testing</h2>
+    
+    <p>This test plan should be executed:</p>
+    <ul>
+        <li>Before major releases</li>
+        <li>After significant feature additions</li>
+        <li>After bug fixes that affect core functionality</li>
+        <li>Periodically (monthly) to ensure ongoing quality</li>
+    </ul>
+    
+    <p>Regular updates to this test plan should be made as new features are added to the platform.</p>
 </body>
 </html>
