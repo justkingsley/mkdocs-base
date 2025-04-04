@@ -492,83 +492,250 @@
                 <th>Test Case</th>
                 <th>Description</th>
                 <th>Expected Result</th>
+                <th>Status</th>
+                <th>Notes</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr data-test-id="profile-view">
                 <td>View Profile</td>
                 <td>Navigate to profile page</td>
                 <td>User's profile information is displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="profile-view" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="profile-view" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="profile-edit">
                 <td>Edit Profile</td>
                 <td>Update profile information (headline, summary, contact info)</td>
                 <td>Profile information is updated successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="profile-edit" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="profile-edit" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="profile-upload-picture">
                 <td>Upload Profile Picture</td>
                 <td>Upload a new profile picture</td>
                 <td>Profile picture is updated successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="profile-upload-picture" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="profile-upload-picture" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="profile-add-work">
                 <td>Add Work Experience</td>
                 <td>Add a new work experience entry</td>
                 <td>Work experience is added to the profile</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="profile-add-work" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="profile-add-work" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="profile-edit-work">
                 <td>Edit Work Experience</td>
                 <td>Update an existing work experience entry</td>
                 <td>Work experience is updated successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="profile-edit-work" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="profile-edit-work" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="profile-delete-work">
                 <td>Delete Work Experience</td>
                 <td>Remove a work experience entry</td>
                 <td>Work experience is removed from the profile</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="profile-delete-work" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="profile-delete-work" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="profile-add-education">
                 <td>Add Education</td>
                 <td>Add a new education entry</td>
                 <td>Education is added to the profile</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="profile-add-education" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="profile-add-education" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="profile-edit-education">
                 <td>Edit Education</td>
                 <td>Update an existing education entry</td>
                 <td>Education is updated successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="profile-edit-education" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="profile-edit-education" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="profile-delete-education">
                 <td>Delete Education</td>
                 <td>Remove an education entry</td>
                 <td>Education is removed from the profile</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="profile-delete-education" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="profile-delete-education" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="profile-add-skills">
                 <td>Add Skills</td>
                 <td>Add new skills to the profile</td>
                 <td>Skills are added successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="profile-add-skills" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="profile-add-skills" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="profile-remove-skills">
                 <td>Remove Skills</td>
                 <td>Remove skills from the profile</td>
                 <td>Skills are removed successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="profile-remove-skills" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="profile-remove-skills" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="profile-add-languages">
                 <td>Add Languages</td>
                 <td>Add new languages to the profile</td>
                 <td>Languages are added successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="profile-add-languages" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="profile-add-languages" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="profile-remove-languages">
                 <td>Remove Languages</td>
                 <td>Remove languages from the profile</td>
                 <td>Languages are removed successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="profile-remove-languages" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="profile-remove-languages" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="profile-add-certifications">
                 <td>Add Certifications</td>
                 <td>Add new certifications to the profile</td>
                 <td>Certifications are added successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="profile-add-certifications" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="profile-add-certifications" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="profile-remove-certifications">
                 <td>Remove Certifications</td>
                 <td>Remove certifications from the profile</td>
                 <td>Certifications are removed successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="profile-remove-certifications" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="profile-remove-certifications" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -581,43 +748,122 @@
                 <th>Test Case</th>
                 <th>Description</th>
                 <th>Expected Result</th>
+                <th>Status</th>
+                <th>Notes</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr data-test-id="news-view-list">
                 <td>View News List</td>
                 <td>Navigate to the News and Insights page</td>
                 <td>List of news articles is displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="news-view-list" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="news-view-list" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="news-filter">
                 <td>Filter News</td>
                 <td>Filter news by category (Arise, Regional, Global)</td>
                 <td>Filtered news articles are displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="news-filter" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="news-filter" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="news-view-article">
                 <td>View News Article</td>
                 <td>Open a news article</td>
                 <td>Article content is displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="news-view-article" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="news-view-article" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="news-add-comment">
                 <td>Add Comment</td>
                 <td>Add a comment to a news article</td>
                 <td>Comment is added successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="news-add-comment" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="news-add-comment" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="news-reply-comment">
                 <td>Reply to Comment</td>
                 <td>Reply to an existing comment</td>
                 <td>Reply is added successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="news-reply-comment" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="news-reply-comment" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="news-add-reaction">
                 <td>Add Reaction</td>
                 <td>Add a reaction to a comment</td>
                 <td>Reaction is added successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="news-add-reaction" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="news-add-reaction" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="news-view-profile">
                 <td>View User Profile from Comment</td>
                 <td>Click on a user's name in a comment</td>
                 <td>User's profile is displayed</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="news-view-profile" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="news-view-profile" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -630,48 +876,138 @@
                 <th>Test Case</th>
                 <th>Description</th>
                 <th>Expected Result</th>
+                <th>Status</th>
+                <th>Notes</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr data-test-id="knowledge-view-hub">
                 <td>View Knowledge Hub</td>
                 <td>Navigate to the Knowledge Hub page</td>
                 <td>Knowledge Hub content is displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="knowledge-view-hub" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="knowledge-view-hub" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="knowledge-browse-topics">
                 <td>Browse Topics</td>
                 <td>Browse different topics (Agribusiness, SME, Retail, etc.)</td>
                 <td>Topic content is displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="knowledge-browse-topics" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="knowledge-browse-topics" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="knowledge-view-resources">
                 <td>View Resources</td>
                 <td>Access resources in the Knowledge Hub</td>
                 <td>Resources are displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="knowledge-view-resources" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="knowledge-view-resources" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="knowledge-download-resource">
                 <td>Download Resource</td>
                 <td>Download a resource</td>
                 <td>Resource is downloaded successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="knowledge-download-resource" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="knowledge-download-resource" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="knowledge-view-discussions">
                 <td>View Discussions</td>
                 <td>Access discussions in the Knowledge Hub</td>
                 <td>Discussions are displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="knowledge-view-discussions" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="knowledge-view-discussions" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="knowledge-start-discussion">
                 <td>Start Discussion</td>
                 <td>Create a new discussion</td>
                 <td>Discussion is created successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="knowledge-start-discussion" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="knowledge-start-discussion" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="knowledge-participate-discussion">
                 <td>Participate in Discussion</td>
                 <td>Add comments to a discussion</td>
                 <td>Comments are added successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="knowledge-participate-discussion" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="knowledge-participate-discussion" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="knowledge-react-discussion">
                 <td>React to Discussion</td>
                 <td>Add reactions to a discussion</td>
                 <td>Reactions are added successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="knowledge-react-discussion" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="knowledge-react-discussion" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -684,43 +1020,122 @@
                 <th>Test Case</th>
                 <th>Description</th>
                 <th>Expected Result</th>
+                <th>Status</th>
+                <th>Notes</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr data-test-id="events-view-list">
                 <td>View Events</td>
                 <td>Navigate to the Events page</td>
                 <td>List of events is displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="events-view-list" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="events-view-list" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="events-filter">
                 <td>Filter Events</td>
                 <td>Filter events by date, category, or location</td>
                 <td>Filtered events are displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="events-filter" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="events-filter" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="events-view-details">
                 <td>View Event Details</td>
                 <td>Open an event to view details</td>
                 <td>Event details are displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="events-view-details" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="events-view-details" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="events-register">
                 <td>Register for Event</td>
                 <td>Register to attend an event</td>
                 <td>Registration is completed successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="events-register" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="events-register" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="events-cancel-registration">
                 <td>Cancel Registration</td>
                 <td>Cancel registration for an event</td>
                 <td>Registration is canceled successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="events-cancel-registration" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="events-cancel-registration" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="events-add-to-calendar">
                 <td>Add Event to Calendar</td>
                 <td>Add an event to calendar</td>
                 <td>Event is added to calendar successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="events-add-to-calendar" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="events-add-to-calendar" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="events-receive-reminder">
                 <td>Receive Event Reminder</td>
                 <td>Verify event reminders are received</td>
                 <td>Event reminders are received as configured</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="events-receive-reminder" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="events-receive-reminder" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -733,38 +1148,106 @@
                 <th>Test Case</th>
                 <th>Description</th>
                 <th>Expected Result</th>
+                <th>Status</th>
+                <th>Notes</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr data-test-id="chat-access">
                 <td>Access Chat</td>
                 <td>Navigate to the Chat page</td>
                 <td>Chat interface is displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="chat-access" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="chat-access" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="chat-start-new">
                 <td>Start New Chat</td>
                 <td>Start a new chat with another user</td>
                 <td>Chat is created successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="chat-start-new" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="chat-start-new" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="chat-send-message">
                 <td>Send Message</td>
                 <td>Send a message in a chat</td>
                 <td>Message is sent successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="chat-send-message" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="chat-send-message" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="chat-receive-message">
                 <td>Receive Message</td>
                 <td>Receive a message from another user</td>
                 <td>Message is received and displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="chat-receive-message" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="chat-receive-message" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="chat-view-history">
                 <td>View Chat History</td>
                 <td>Scroll through chat history</td>
                 <td>Chat history is displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="chat-view-history" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="chat-view-history" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="chat-search-messages">
                 <td>Search Messages</td>
                 <td>Search for specific messages</td>
                 <td>Search results are displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="chat-search-messages" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="chat-search-messages" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -777,38 +1260,106 @@
                 <th>Test Case</th>
                 <th>Description</th>
                 <th>Expected Result</th>
+                <th>Status</th>
+                <th>Notes</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr data-test-id="network-view">
                 <td>View Network</td>
                 <td>Navigate to My Network page</td>
                 <td>Network connections are displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="network-view" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="network-view" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="network-search-users">
                 <td>Search for Users</td>
                 <td>Search for users to connect with</td>
                 <td>Search results are displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="network-search-users" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="network-search-users" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="network-send-request">
                 <td>Send Connection Request</td>
                 <td>Send a connection request to another user</td>
                 <td>Connection request is sent successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="network-send-request" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="network-send-request" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="network-accept-request">
                 <td>Accept Connection Request</td>
                 <td>Accept a connection request from another user</td>
                 <td>Connection is established successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="network-accept-request" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="network-accept-request" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="network-decline-request">
                 <td>Decline Connection Request</td>
                 <td>Decline a connection request</td>
                 <td>Connection request is declined successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="network-decline-request" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="network-decline-request" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="network-remove-connection">
                 <td>Remove Connection</td>
                 <td>Remove an existing connection</td>
                 <td>Connection is removed successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="network-remove-connection" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="network-remove-connection" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -821,28 +1372,74 @@
                 <th>Test Case</th>
                 <th>Description</th>
                 <th>Expected Result</th>
+                <th>Status</th>
+                <th>Notes</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr data-test-id="notifications-view">
                 <td>View Notifications</td>
                 <td>Navigate to the Notifications page</td>
                 <td>Notifications are displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="notifications-view" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="notifications-view" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="notifications-mark-read">
                 <td>Mark Notification as Read</td>
                 <td>Mark a notification as read</td>
                 <td>Notification is marked as read successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="notifications-mark-read" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="notifications-mark-read" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="notifications-clear-all">
                 <td>Clear All Notifications</td>
                 <td>Clear all notifications</td>
                 <td>All notifications are cleared successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="notifications-clear-all" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="notifications-clear-all" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="notifications-preferences">
                 <td>Notification Preferences</td>
                 <td>Update notification preferences</td>
                 <td>Preferences are updated successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="notifications-preferences" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="notifications-preferences" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -861,48 +1458,138 @@
                 <th>Test Case</th>
                 <th>Description</th>
                 <th>Expected Result</th>
+                <th>Status</th>
+                <th>Notes</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr data-test-id="mod-view-reported">
                 <td>View Reported Content</td>
                 <td>Access reported content</td>
                 <td>Reported content is displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="mod-view-reported" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="mod-view-reported" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="mod-review-comment">
                 <td>Review Comment</td>
                 <td>Review a reported comment</td>
                 <td>Comment details are displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="mod-review-comment" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="mod-review-comment" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="mod-approve-comment">
                 <td>Approve Comment</td>
                 <td>Approve a reported comment</td>
                 <td>Comment is approved and remains visible</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="mod-approve-comment" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="mod-approve-comment" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="mod-delete-comment">
                 <td>Delete Comment</td>
                 <td>Delete a reported comment</td>
                 <td>Comment is deleted successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="mod-delete-comment" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="mod-delete-comment" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="mod-review-discussion">
                 <td>Review Discussion</td>
                 <td>Review a reported discussion</td>
                 <td>Discussion details are displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="mod-review-discussion" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="mod-review-discussion" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="mod-approve-discussion">
                 <td>Approve Discussion</td>
                 <td>Approve a reported discussion</td>
                 <td>Discussion is approved and remains visible</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="mod-approve-discussion" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="mod-approve-discussion" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="mod-delete-discussion">
                 <td>Delete Discussion</td>
                 <td>Delete a reported discussion</td>
                 <td>Discussion is deleted successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="mod-delete-discussion" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="mod-delete-discussion" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="mod-issue-warning">
                 <td>Issue Warning</td>
                 <td>Issue a warning to a user</td>
                 <td>Warning is issued successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="mod-issue-warning" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="mod-issue-warning" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -915,33 +1602,90 @@
                 <th>Test Case</th>
                 <th>Description</th>
                 <th>Expected Result</th>
+                <th>Status</th>
+                <th>Notes</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr data-test-id="mod-add-resource">
                 <td>Add Resource</td>
                 <td>Add a new resource to the Knowledge Hub</td>
                 <td>Resource is added successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="mod-add-resource" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="mod-add-resource" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="mod-edit-resource">
                 <td>Edit Resource</td>
                 <td>Update an existing resource</td>
                 <td>Resource is updated successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="mod-edit-resource" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="mod-edit-resource" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="mod-delete-resource">
                 <td>Delete Resource</td>
                 <td>Remove a resource</td>
                 <td>Resource is deleted successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="mod-delete-resource" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="mod-delete-resource" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="mod-categorize-resource">
                 <td>Categorize Resource</td>
                 <td>Assign categories to a resource</td>
                 <td>Categories are assigned successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="mod-categorize-resource" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="mod-categorize-resource" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="mod-feature-resource">
                 <td>Feature Resource</td>
                 <td>Mark a resource as featured</td>
                 <td>Resource is featured successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="mod-feature-resource" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="mod-feature-resource" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -954,33 +1698,90 @@
                 <th>Test Case</th>
                 <th>Description</th>
                 <th>Expected Result</th>
+                <th>Status</th>
+                <th>Notes</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr data-test-id="mod-pin-discussion">
                 <td>Pin Discussion</td>
                 <td>Pin a discussion to the top</td>
                 <td>Discussion is pinned successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="mod-pin-discussion" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="mod-pin-discussion" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="mod-close-discussion">
                 <td>Close Discussion</td>
                 <td>Close a discussion to prevent new comments</td>
                 <td>Discussion is closed successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="mod-close-discussion" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="mod-close-discussion" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="mod-reopen-discussion">
                 <td>Reopen Discussion</td>
                 <td>Reopen a closed discussion</td>
                 <td>Discussion is reopened successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="mod-reopen-discussion" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="mod-reopen-discussion" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="mod-move-discussion">
                 <td>Move Discussion</td>
                 <td>Move a discussion to a different category</td>
                 <td>Discussion is moved successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="mod-move-discussion" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="mod-move-discussion" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="mod-manage-participants">
                 <td>Manage Participants</td>
                 <td>Add or remove participants from a discussion</td>
                 <td>Participants are updated successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="mod-manage-participants" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="mod-manage-participants" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -993,28 +1794,74 @@
                 <th>Test Case</th>
                 <th>Description</th>
                 <th>Expected Result</th>
+                <th>Status</th>
+                <th>Notes</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr data-test-id="mod-review-registrations">
                 <td>Review Event Registration</td>
                 <td>Review event registrations</td>
                 <td>Registrations are displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="mod-review-registrations" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="mod-review-registrations" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="mod-approve-registration">
                 <td>Approve Registration</td>
                 <td>Approve a registration</td>
                 <td>Registration is approved successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="mod-approve-registration" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="mod-approve-registration" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="mod-reject-registration">
                 <td>Reject Registration</td>
                 <td>Reject a registration</td>
                 <td>Registration is rejected successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="mod-reject-registration" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="mod-reject-registration" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="mod-export-attendees">
                 <td>Export Attendee List</td>
                 <td>Export list of event attendees</td>
                 <td>Attendee list is exported successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="mod-export-attendees" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="mod-export-attendees" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -1033,58 +1880,170 @@
                 <th>Test Case</th>
                 <th>Description</th>
                 <th>Expected Result</th>
+                <th>Status</th>
+                <th>Notes</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr data-test-id="admin-view-users">
                 <td>View Users</td>
                 <td>Access the user management page</td>
                 <td>Users are displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-view-users" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-view-users" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-create-user">
                 <td>Create User</td>
                 <td>Create a new user account</td>
                 <td>User is created successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-create-user" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-create-user" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-edit-user">
                 <td>Edit User</td>
                 <td>Update user information</td>
                 <td>User information is updated successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-edit-user" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-edit-user" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-delete-user">
                 <td>Delete User</td>
                 <td>Delete a user account</td>
                 <td>User is deleted successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-delete-user" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-delete-user" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-assign-role">
                 <td>Assign Role</td>
                 <td>Assign a role to a user (Admin, Moderator, Expert)</td>
                 <td>Role is assigned successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-assign-role" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-assign-role" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-remove-role">
                 <td>Remove Role</td>
                 <td>Remove a role from a user</td>
                 <td>Role is removed successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-remove-role" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-remove-role" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-reset-password">
                 <td>Reset User Password</td>
                 <td>Reset a user's password</td>
                 <td>Password is reset successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-reset-password" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-reset-password" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-view-activity">
                 <td>View User Activity</td>
                 <td>View a user's activity log</td>
                 <td>Activity log is displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-view-activity" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-view-activity" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-suspend-user">
                 <td>Suspend User</td>
                 <td>Suspend a user account</td>
                 <td>User account is suspended successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-suspend-user" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-suspend-user" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-reactivate-user">
                 <td>Reactivate User</td>
                 <td>Reactivate a suspended user account</td>
                 <td>User account is reactivated successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-reactivate-user" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-reactivate-user" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -1097,38 +2056,106 @@
                 <th>Test Case</th>
                 <th>Description</th>
                 <th>Expected Result</th>
+                <th>Status</th>
+                <th>Notes</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr data-test-id="admin-view-roles">
                 <td>View Roles</td>
                 <td>Access the role management page</td>
                 <td>Roles are displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-view-roles" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-view-roles" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-create-role">
                 <td>Create Role</td>
                 <td>Create a new custom role</td>
                 <td>Role is created successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-create-role" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-create-role" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-edit-role">
                 <td>Edit Role</td>
                 <td>Update role permissions</td>
                 <td>Role is updated successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-edit-role" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-edit-role" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-delete-role">
                 <td>Delete Role</td>
                 <td>Delete a custom role</td>
                 <td>Role is deleted successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-delete-role" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-delete-role" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-assign-permissions">
                 <td>Assign Permissions</td>
                 <td>Assign permissions to a role</td>
                 <td>Permissions are assigned successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-assign-permissions" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-assign-permissions" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-remove-permissions">
                 <td>Remove Permissions</td>
                 <td>Remove permissions from a role</td>
                 <td>Permissions are removed successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-remove-permissions" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-remove-permissions" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -1141,43 +2168,122 @@
                 <th>Test Case</th>
                 <th>Description</th>
                 <th>Expected Result</th>
+                <th>Status</th>
+                <th>Notes</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr data-test-id="admin-create-article">
                 <td>Create News Article</td>
                 <td>Create a new news article</td>
                 <td>Article is created successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-create-article" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-create-article" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-edit-article">
                 <td>Edit News Article</td>
                 <td>Update an existing news article</td>
                 <td>Article is updated successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-edit-article" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-edit-article" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-delete-article">
                 <td>Delete News Article</td>
                 <td>Delete a news article</td>
                 <td>Article is deleted successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-delete-article" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-delete-article" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-publish-article">
                 <td>Publish Article</td>
                 <td>Publish a draft article</td>
                 <td>Article is published successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-publish-article" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-publish-article" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-unpublish-article">
                 <td>Unpublish Article</td>
                 <td>Unpublish a published article</td>
                 <td>Article is unpublished successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-unpublish-article" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-unpublish-article" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-feature-article">
                 <td>Feature Article</td>
                 <td>Mark an article as featured</td>
                 <td>Article is featured successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-feature-article" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-feature-article" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-manage-categories">
                 <td>Manage Categories</td>
                 <td>Add, edit, or delete news categories</td>
                 <td>Categories are managed successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-manage-categories" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-manage-categories" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -1190,38 +2296,106 @@
                 <th>Test Case</th>
                 <th>Description</th>
                 <th>Expected Result</th>
+                <th>Status</th>
+                <th>Notes</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr data-test-id="admin-update-site-settings">
                 <td>Update Site Settings</td>
                 <td>Update general site settings</td>
                 <td>Settings are updated successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-update-site-settings" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-update-site-settings" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-manage-navigation">
                 <td>Manage Navigation</td>
                 <td>Update navigation menu items</td>
                 <td>Navigation is updated successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-manage-navigation" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-manage-navigation" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-manage-sidebar">
                 <td>Manage Sidebar</td>
                 <td>Update sidebar items</td>
                 <td>Sidebar is updated successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-manage-sidebar" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-manage-sidebar" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-manage-header">
                 <td>Manage Header</td>
                 <td>Update header content</td>
                 <td>Header is updated successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-manage-header" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-manage-header" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-configure-email-templates">
                 <td>Configure Email Templates</td>
                 <td>Update email notification templates</td>
                 <td>Templates are updated successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-configure-email-templates" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-configure-email-templates" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-configure-integrations">
                 <td>Configure Integrations</td>
                 <td>Update integration settings (LinkedIn, etc.)</td>
                 <td>Integrations are updated successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-configure-integrations" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-configure-integrations" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -1234,43 +2408,122 @@
                 <th>Test Case</th>
                 <th>Description</th>
                 <th>Expected Result</th>
+                <th>Status</th>
+                <th>Notes</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr data-test-id="admin-view-dashboard">
                 <td>View Dashboard</td>
                 <td>Access the admin dashboard</td>
                 <td>Dashboard is displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-view-dashboard" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-view-dashboard" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-view-user-stats">
                 <td>View User Statistics</td>
                 <td>Access user statistics</td>
                 <td>Statistics are displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-view-user-stats" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-view-user-stats" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-view-content-stats">
                 <td>View Content Statistics</td>
                 <td>Access content statistics</td>
                 <td>Statistics are displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-view-content-stats" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-view-content-stats" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-view-engagement-metrics">
                 <td>View Engagement Metrics</td>
                 <td>Access engagement metrics</td>
                 <td>Metrics are displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-view-engagement-metrics" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-view-engagement-metrics" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-generate-reports">
                 <td>Generate Reports</td>
                 <td>Generate custom reports</td>
                 <td>Reports are generated successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-generate-reports" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-generate-reports" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-export-data">
                 <td>Export Data</td>
                 <td>Export data for analysis</td>
                 <td>Data is exported successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-export-data" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-export-data" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-view-audit-logs">
                 <td>View Audit Logs</td>
                 <td>Access system audit logs</td>
                 <td>Audit logs are displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-view-audit-logs" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-view-audit-logs" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -1283,33 +2536,90 @@
                 <th>Test Case</th>
                 <th>Description</th>
                 <th>Expected Result</th>
+                <th>Status</th>
+                <th>Notes</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr data-test-id="admin-view-system-status">
                 <td>View System Status</td>
                 <td>Access system status information</td>
                 <td>Status information is displayed correctly</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-view-system-status" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-view-system-status" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-clear-cache">
                 <td>Clear Cache</td>
                 <td>Clear system cache</td>
                 <td>Cache is cleared successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-clear-cache" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-clear-cache" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-backup-data">
                 <td>Backup Data</td>
                 <td>Initiate a data backup</td>
                 <td>Backup is created successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-backup-data" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-backup-data" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-restore-data">
                 <td>Restore Data</td>
                 <td>Restore data from a backup</td>
                 <td>Data is restored successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-restore-data" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-restore-data" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="admin-update-system-settings">
                 <td>Update System Settings</td>
                 <td>Update system configuration</td>
                 <td>Settings are updated successfully</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="admin-update-system-settings" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="admin-update-system-settings" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -1326,28 +2636,74 @@
                 <th>Test Case</th>
                 <th>Description</th>
                 <th>Expected Result</th>
+                <th>Status</th>
+                <th>Notes</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr data-test-id="cross-access-control">
                 <td>Access Control</td>
                 <td>Attempt to access restricted pages with different user roles</td>
                 <td>Access is granted or denied based on user role</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="cross-access-control" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="cross-access-control" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="cross-permission-enforcement">
                 <td>Permission Enforcement</td>
                 <td>Attempt to perform actions requiring specific permissions</td>
                 <td>Actions are allowed or prevented based on user permissions</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="cross-permission-enforcement" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="cross-permission-enforcement" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="cross-role-visibility">
                 <td>Role Visibility</td>
                 <td>Verify that UI elements are shown/hidden based on user role</td>
                 <td>UI elements are displayed appropriately for each role</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="cross-role-visibility" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="cross-role-visibility" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
-            <tr>
+            <tr data-test-id="cross-content-visibility">
                 <td>Content Visibility</td>
                 <td>Verify that content visibility respects access controls</td>
                 <td>Content is visible or hidden based on user permissions</td>
+                <td class="test-status">
+                    <label class="status-label pass-label">
+                        <input type="radio" name="cross-content-visibility" value="pass"> Pass
+                    </label>
+                    <label class="status-label fail-label">
+                        <input type="radio" name="cross-content-visibility" value="fail"> Fail
+                    </label>
+                </td>
+                <td class="test-notes-cell">
+                    <textarea class="test-notes" placeholder="Add test notes here..."></textarea>
+                </td>
             </tr>
         </tbody>
     </table>
